@@ -396,6 +396,65 @@
   .tl-item ul{ margin:0; padding-left:18px; color:var(--text-dim); font-size:14px; }
   .tl-item li{ margin-bottom:6px; }
 
+  /* ---------- MARKETS ---------- */
+  .mkt-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:28px;
+    align-items:start;
+  }
+  @media (max-width:900px){ .mkt-grid{ grid-template-columns:1fr; } }
+  .mkt-chart-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+  }
+  .mkt-chart-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .mkt-toggles{ display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+  .mkt-toggle{
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    color:var(--text-dim);
+    font-size:11.5px;
+    padding:6px 12px;
+    border-radius:5px;
+    cursor:pointer;
+    font-family:'IBM Plex Mono', monospace;
+    transition:all .15s;
+  }
+  .mkt-toggle.active{
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+  .mkt-note{
+    margin:14px 0 0;
+    color:var(--text-dim);
+    font-size:12.5px;
+  }
+  #candleTip{
+    position:absolute;
+    pointer-events:none;
+    background:#0a0f1c;
+    border:1px solid var(--gold-dim);
+    border-radius:6px;
+    padding:8px 10px;
+    font-size:11px;
+    color:var(--text);
+    display:none;
+    z-index:10;
+    white-space:nowrap;
+    line-height:1.6;
+  }
+  .mkt-skills{ display:flex; flex-direction:column; gap:18px; }
+
   /* ---------- FOOTER ---------- */
   footer{ padding:56px 0 60px; }
   .footer-grid{
@@ -444,6 +503,7 @@
       <a href="#work">Work</a>
       <a href="#projects">Projects</a>
       <a href="#viz">Dashboards</a>
+      <a href="#markets">Markets</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </div>
@@ -613,6 +673,53 @@
   </div>
 </section>
 
+<section id="markets">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Markets &amp; Derivatives</div>
+        <h2>Market structure fluency</h2>
+      </div>
+      <p>Working knowledge of the instruments behind the data — technical analysis, futures market structure, and multi-timeframe frameworks applied to gold, equities, and crypto markets.</p>
+    </div>
+
+    <div class="mkt-grid">
+      <div class="mkt-chart-card">
+        <div class="mkt-chart-head">
+          <span class="mono" style="font-size:12px; color:var(--gold);">XAU/USD · ILLUSTRATIVE DAILY</span>
+          <span class="mono" style="font-size:11px; color:var(--text-dim);">hover candles · toggle overlays</span>
+        </div>
+        <div class="mkt-toggles mono">
+          <button class="mkt-toggle active" data-layer="patterns">Patterns</button>
+          <button class="mkt-toggle active" data-layer="fvg">Fair Value Gap</button>
+          <button class="mkt-toggle" data-layer="fib">Fibonacci</button>
+        </div>
+        <div style="position:relative;">
+          <svg id="candleChart" viewBox="0 0 640 320" width="100%" role="img" aria-label="Illustrative candlestick chart with technical annotations"></svg>
+          <div id="candleTip" class="mono"></div>
+        </div>
+        <p class="mkt-note">Illustrative chart — the same pattern vocabulary (doji, engulfing, fair value gaps, Fibonacci confluence) I apply in multi-timeframe gold and equity index analysis.</p>
+      </div>
+
+      <div class="mkt-skills">
+        <div class="stack-group">
+          <h4>Technical Analysis</h4>
+          <div class="pills"><span class="pill">Candlestick Patterns</span><span class="pill">Multi-Timeframe Analysis</span><span class="pill">Fibonacci Retracements</span><span class="pill">Fair Value Gaps</span><span class="pill">Momentum / RSI</span></div>
+        </div>
+        <div class="stack-group">
+          <h4>Instruments &amp; Markets</h4>
+          <div class="pills"><span class="pill">Gold (XAU/USD)</span><span class="pill">Equity Index Futures</span><span class="pill">Micro Futures (MGC, MES)</span><span class="pill">Crypto Futures</span><span class="pill">US Equities</span></div>
+        </div>
+        <div class="stack-group">
+          <h4>Macro Context</h4>
+          <div class="pills"><span class="pill">Fed Policy Impacts</span><span class="pill">Rates &amp; Dollar Dynamics</span><span class="pill">Geopolitical Catalysts</span></div>
+        </div>
+        <p style="color:var(--text-dim); font-size:13.5px; margin-top:6px;">This fluency feeds directly back into my day job: understanding how fixed income, equity, and derivative instruments behave makes performance breaks easier to spot and explain — the difference between flagging a number and explaining a market.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="experience">
   <div class="wrap">
     <div class="section-head">
@@ -628,10 +735,15 @@
           <h3>Morgan Stanley</h3>
           <div class="role">Associate — Snowflake, Git, Python, Tableau, FactSet, Morningstar, Lipper, Bloomberg, Aladdin — Boston, MA</div>
           <ul>
-            <li>Led the strategic migration of Separately Managed Accounts from BNY Mellon to Aladdin — requirements definition, data mapping, parallel testing, and production deployment — partnering with front office, technology, operations, and custodial teams</li>
+            <li>Led the strategic migration of Separately Managed Accounts from BNY Mellon to Aladdin as senior IC on a 4-person pod — requirements definition, data mapping, parallel testing, and production deployment — partnering with front office, technology, operations, and custodial teams</li>
+            <li>Operated performance measurement as the final QC layer on portfolio data, working closely with accounting across fixed income, equity, high yield, and derivative asset classes spanning multiple portfolio types</li>
+            <li>Analyzed transaction-level performance impacts — identifying which transactions affected portfolio performance and quantifying their contribution — to resolve performance breaks with accounting and operations</li>
+            <li>Performed large-scale, multi-custodian reconciliation across State Street, BNY Mellon, and accounting PBOR platforms to validate positions, transactions, and market values through migration and BAU</li>
+            <li>Drove cash flow treatment methodology decisions (beginning-of-day vs. end-of-day vs. custom split treatment) directly affecting return calculation accuracy across migrated portfolios</li>
+            <li>Delivered status reporting to senior management — surfacing issues early, tracking resolution, and owning Jira tickets through closure</li>
             <li>Designed and delivered centralized data integration and transformation solutions using Python and SQL within Snowflake, in Linux/UNIX environments, automating validation, ingestion, and reporting workflows</li>
             <li>Automated recurring reporting and analytics workflows using Python (pandas/NumPy), SQL, and Tableau with scheduled refresh and ETL processes — driving ~25–30% operational efficiency gains</li>
-            <li>Managed data sourcing and oversight from FactSet, Morningstar, Lipper, and Bloomberg; performed reconciliations, root-cause analysis, and exception resolution for accurate performance measurement and reporting</li>
+            <li>Managed data sourcing and oversight from FactSet, Morningstar, Lipper, and Bloomberg; performed reconciliations, root-cause analysis, and exception resolution</li>
             <li>Strengthened data governance and BAU stability via documentation, validation checks, and lineage tracking (Apache Atlas); delivered initiatives within SDLC and Agile frameworks</li>
             <li>Supported performance measurement and validation for SMAs on Aladdin and mutual funds (open-end and closed-end) on FactSet B-One — return calculations, cash-flow treatment, fee impacts, benchmark alignment, and exception analysis</li>
           </ul>
@@ -722,6 +834,119 @@
     track.innerHTML = set + set;
   }
   renderTicker();
+
+  // ---------- Interactive candlestick chart (illustrative) ----------
+  (function(){
+    const svg = document.getElementById('candleChart');
+    if(!svg) return;
+    const tip = document.getElementById('candleTip');
+    const W = 640, H = 320, PAD = {t:20, r:52, b:24, l:10};
+
+    // Illustrative OHLC series shaped to contain a downtrend, FVG, doji, bullish engulfing, and recovery
+    const data = [
+      {o:2062,h:2070,l:2054,c:2058},{o:2058,h:2066,l:2050,c:2053},{o:2053,h:2059,l:2041,c:2044},
+      {o:2044,h:2050,l:2033,c:2036},{o:2036,h:2040,l:2020,c:2024},{o:2024,h:2030,l:2008,c:2012},
+      {o:2012,h:2016,l:1994,c:1998},{o:1998,h:2004,l:1984,c:1988},{o:1988,h:1996,l:1980,c:1992},
+      {o:1992,h:1994,l:1982,c:1990,doji:true},{o:1988,h:2006,l:1985,c:2004,engulf:true},
+      {o:2004,h:2018,l:2000,c:2014},{o:2014,h:2034,l:2012,c:2030,fvgStart:true},
+      {o:2030,h:2044,l:2026,c:2040},{o:2040,h:2048,l:2030,c:2034},{o:2034,h:2042,l:2028,c:2038},
+      {o:2038,h:2054,l:2036,c:2050},{o:2050,h:2062,l:2044,c:2058},{o:2058,h:2064,l:2048,c:2052},
+      {o:2052,h:2068,l:2050,c:2064}
+    ];
+
+    const lows = data.map(d=>d.l), highs = data.map(d=>d.h);
+    const min = Math.min(...lows)-8, max = Math.max(...highs)+8;
+    const x = i => PAD.l + (i+0.5) * (W-PAD.l-PAD.r) / data.length;
+    const y = v => PAD.t + (max-v)/(max-min) * (H-PAD.t-PAD.b);
+    const cw = (W-PAD.l-PAD.r)/data.length * 0.55;
+
+    const NS = 'http://www.w3.org/2000/svg';
+    function el(tag, attrs){
+      const e = document.createElementNS(NS, tag);
+      for(const k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+
+    const layers = { base: el('g',{}), fvg: el('g',{}), fib: el('g',{}), patterns: el('g',{}) };
+
+    // gridlines + right axis labels
+    for(let gv = Math.ceil(min/20)*20; gv <= max; gv += 20){
+      layers.base.appendChild(el('line',{x1:PAD.l, y1:y(gv), x2:W-PAD.r, y2:y(gv), stroke:'#1c2740', 'stroke-width':1}));
+      const t = el('text',{x:W-PAD.r+6, y:y(gv)+4, fill:'#5c6884', 'font-size':'10', 'font-family':'IBM Plex Mono, monospace'});
+      t.textContent = gv;
+      layers.base.appendChild(t);
+    }
+
+    // FVG zone: gap between candle 11 high and candle 13 low (3-candle imbalance)
+    const fvgTop = data[12].l, fvgBot = data[10].h;
+    layers.fvg.appendChild(el('rect',{
+      x:x(10)-cw/2, y:y(fvgTop), width:W-PAD.r-(x(10)-cw/2), height:y(fvgBot)-y(fvgTop),
+      fill:'rgba(51,201,176,0.10)', stroke:'rgba(51,201,176,0.35)', 'stroke-width':1, 'stroke-dasharray':'4 3'
+    }));
+    const fvgLabel = el('text',{x:x(15), y:y(fvgTop)-6, fill:'#33c9b0', 'font-size':'10', 'font-family':'IBM Plex Mono, monospace'});
+    fvgLabel.textContent = 'FVG — unfilled imbalance';
+    layers.fvg.appendChild(fvgLabel);
+
+    // Fibonacci retracement from swing high (candle 0) to swing low (candle 9)
+    const swingHi = data[0].h, swingLo = data[9].l;
+    [[0.382,'38.2%'],[0.5,'50%'],[0.618,'61.8%']].forEach(([r,label])=>{
+      const lv = swingLo + (swingHi-swingLo)*r;
+      layers.fib.appendChild(el('line',{x1:PAD.l, y1:y(lv), x2:W-PAD.r, y2:y(lv), stroke:'#c9a24b', 'stroke-width':1, 'stroke-dasharray':'6 4', opacity:0.55}));
+      const t = el('text',{x:PAD.l+4, y:y(lv)-4, fill:'#c9a24b', 'font-size':'10', 'font-family':'IBM Plex Mono, monospace', opacity:0.8});
+      t.textContent = 'Fib ' + label;
+      layers.fib.appendChild(t);
+    });
+
+    // candles
+    data.forEach((d,i)=>{
+      const up = d.c >= d.o;
+      const color = up ? '#33c9b0' : '#e2635a';
+      const g = el('g',{cursor:'crosshair'});
+      g.appendChild(el('line',{x1:x(i), y1:y(d.h), x2:x(i), y2:y(d.l), stroke:color, 'stroke-width':1.2}));
+      g.appendChild(el('rect',{
+        x:x(i)-cw/2, y:y(Math.max(d.o,d.c)), width:cw, height:Math.max(2, Math.abs(y(d.o)-y(d.c))),
+        fill:up?color:'#0b1220', stroke:color, 'stroke-width':1.2, rx:1
+      }));
+      g.addEventListener('mousemove', (ev)=>{
+        const rect = svg.getBoundingClientRect();
+        tip.style.display = 'block';
+        tip.style.left = Math.min(rect.width-150, (ev.clientX-rect.left)+14) + 'px';
+        tip.style.top = (ev.clientY-rect.top-10) + 'px';
+        tip.innerHTML = '<span style="color:#c9a24b">O</span> '+d.o+' <span style="color:#c9a24b">H</span> '+d.h+' <span style="color:#c9a24b">L</span> '+d.l+' <span style="color:#c9a24b">C</span> '+d.c
+          + (d.doji ? '<br><span style="color:#33c9b0">Doji — indecision at the low</span>' : '')
+          + (d.engulf ? '<br><span style="color:#33c9b0">Bullish engulfing — reversal signal</span>' : '');
+      });
+      g.addEventListener('mouseleave', ()=>{ tip.style.display='none'; });
+      layers.base.appendChild(g);
+    });
+
+    // pattern callouts
+    function callout(i, text, dyText, dyLine){
+      const g = el('g',{});
+      g.appendChild(el('line',{x1:x(i), y1:y(data[i].l)+4, x2:x(i), y2:y(data[i].l)+dyLine, stroke:'#8b96ac', 'stroke-width':1, 'stroke-dasharray':'2 3'}));
+      const t = el('text',{x:x(i), y:y(data[i].l)+dyText, fill:'#e7ecf3', 'font-size':'10.5', 'font-family':'IBM Plex Mono, monospace', 'text-anchor':'middle'});
+      t.textContent = text;
+      g.appendChild(t);
+      layers.patterns.appendChild(g);
+    }
+    callout(9, 'doji', 30, 20);
+    callout(10, 'bullish engulfing', 46, 36);
+
+    svg.appendChild(layers.base);
+    svg.appendChild(layers.fvg);
+    svg.appendChild(layers.fib);
+    svg.appendChild(layers.patterns);
+
+    // toggles
+    layers.fib.style.display = 'none';
+    document.querySelectorAll('.mkt-toggle').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        btn.classList.toggle('active');
+        const layer = layers[btn.dataset.layer];
+        if(layer) layer.style.display = btn.classList.contains('active') ? '' : 'none';
+      });
+    });
+  })();
 </script>
 
 </body>
